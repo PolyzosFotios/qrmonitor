@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(url);
 
     try {
-      const response = await fetch("/generateqr", {
+      const response = await fetch("/api/generateqr", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ url }),
@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       console.log(id);
 
-      const response = await fetch(`/stats/${id}`);
+      const response = await fetch(`/api/stats?id=${id}`);
 
       if (!response.ok) {
         console.error("Response not OK:", response.status);
