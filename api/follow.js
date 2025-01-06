@@ -1,7 +1,7 @@
 import { supabase } from "../supabase.js";
 
 export default async function handler(req, res) {
-  const { id } = req.query;
+  const { id } = req.query; // Παίρνει το ID από το URL
 
   const { data, error } = await supabase
     .from("generqrcodes")
@@ -14,9 +14,9 @@ export default async function handler(req, res) {
     return res.status(404).json({ error: "QR Code not found" });
   }
 
+  // Ενημέρωση του αριθμού των σαρώσεων
   const updatedScans = updateScan(data.scans);
 
-  // Ενημέρωση του αριθμού σαρώσεων
   const { error: updateError } = await supabase
     .from("generqrcodes")
     .update({ scans: updatedScans })
@@ -27,14 +27,14 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: "Failed to update scans" });
   }
 
-  res.redirect(data.url);
+  res.redirect(data.url); // Ανακατεύθυνση στη διεύθυνση URL
 }
 
 function updateScan(scans) {
   const d = new Date();
   const year = d.getFullYear();
   const month = d.getMonth();
-  scans = scans.slice(0, -1);
+  scans = scans.slice(0, -1); // Αφαίρεση τελευταίου κόμματος
   const scanEntries = scans.split(",");
   let updatedScans = "";
 
