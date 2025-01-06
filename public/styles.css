@@ -1,0 +1,250 @@
+:root {
+  --main-font: "Montserrat", sans-serif;
+  --prim-color: rgb(91, 133, 156);
+  --sec-color: rgb(36, 36, 36);
+  --open-grey: rgb(244, 244, 244);
+  --padding: 14px;
+  --border-radius: 20px;
+  --font-size-text: 16px;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 100;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main_title {
+  margin: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sub_title {
+  color: #707070;
+  margin: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.font_title {
+  font-size: 64px;
+  font-weight: 900;
+  color: var(--sec-color);
+}
+
+.prim_color {
+  color: var(--prim-color);
+}
+
+input {
+  border: none;
+  outline: none;
+  height: 46px;
+  width: 70%;
+  border-radius: var(--border-radius);
+  padding: var(--padding);
+  margin-right: var(--padding);
+  background-color: var(--open-grey);
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+}
+
+input:hover {
+  box-shadow: 0px 0px 8px 10px rgba(178, 178, 178, 0.137);
+  background-color: rgb(236, 236, 236);
+  transition: all 0.4s ease;
+}
+
+button {
+  border: none;
+  outline: none;
+  height: 46px;
+  border-radius: var(--border-radius);
+  padding-inline: 24px;
+  background-color: var(--prim-color);
+  color: white;
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+}
+button:hover {
+  background-color: var(--sec-color);
+  cursor: pointer;
+  transition: all 0.6s ease;
+}
+
+.tabs-cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--border-radius);
+  margin: 20px auto;
+  max-width: 500px;
+}
+
+.tab {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  font-size: var(--font-size-text);
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab.active {
+  background-color: var(--sec-color);
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tab:hover {
+  background-color: var(--prim-color);
+  color: white;
+}
+
+.tab-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  width: 100%;
+}
+
+.content {
+  display: none;
+  width: 70%;
+}
+
+.content.active {
+  display: block;
+}
+
+.containerQR {
+  padding: var(--padding); /* Προαιρετικό: Εσωτερικό περιθώριο */
+  align-items: center; /* Προαιρετικό: Κεντράρει το κείμενο */
+}
+
+.dataYearTitle {
+  font-size: 22px;
+  padding: var(--padding);
+}
+
+.center_items{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.center_items_col{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.id_info{
+  flex-direction: column;
+  padding: var(--padding);
+}
+
+.text_det{
+  color: grey;
+  font-size: 12px;
+  text-align: center;
+}
+
+#statsResult{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dataEntry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--open-grey);
+  border-radius: var(--border-radius);
+  font-size: 14px;
+  padding: var(--padding);
+  margin-bottom: var(--padding);
+  width: 50%;
+}
+
+.border_solid{
+  border: 2px solid var(--open-grey);
+  border-radius: var(--border-radius);
+  align-items: center;
+}
+
+.msgs{
+  margin-top: 12px;
+  height: 20px;
+}
+
+.footer {
+  background-color: var(--open-grey); 
+  color: var(--sec-color); 
+  text-align: center;
+  font-size: 12px;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.font_32{
+  font-size: 32px;
+}
+
+.blink_ {
+  animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .tab-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    width: 100%;
+  }
+
+  input {
+      margin-bottom: var(--padding);
+  }
+
+  .center_items{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .dataEntry {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+  }
+}
+

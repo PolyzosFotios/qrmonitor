@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>QR Coder</title>
+  </head>
+  <body>
+    <div class="main_title">
+      <p class="font_title">
+        Think. Create. <strong class="prim_color">Track<span class="blink_ font_title prim_color">_</span></strong>
+      </p>
+      <p class="font_title prim_color"><strong>For Free.</strong></p>
+    </div>
+    <p class="sub_title">
+      — Bring your ideas to people with a QR code!<br />Track its performance
+      effortlessly and for free —
+    </p>
+    <br />
+
+    <div class="tabs-cont">
+      <div class="tabs">
+        <button class="tab active" data-target="tab1">Create QR Code</button>
+        <button class="tab" data-target="tab2">Track QR Code</button>
+      </div>
+    </div>
+    <div class="tab-content">
+      <div id="tab1" class="content active">
+        <form class="tab-content" id="formGenQR">
+          <input
+            type="url"
+            id="inputUrl"
+            placeholder="E.g. https://example.com/"
+            required
+          />
+          <button type="submit">Create</button>
+        </form>
+        <p id="qrCode"></p>
+      </div>
+      <div id="tab2" class="content">
+        <form class="tab-content" id="formViewScans">
+          <input
+            type="text"
+            id="inputID"
+            placeholder="Add your QR code ID"
+            required
+          />
+          <button type="submit">Track</button>
+        </form>
+        <br />
+        <div id="statsResult"></div>
+        
+      </div>
+    </div>
+    <br /><br /><br />
+    <footer class="footer">
+      <p>&copy; 2024-<span id="currYear"></span> AGTC Group™. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
