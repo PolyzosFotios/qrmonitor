@@ -9,7 +9,7 @@ export default async function handler(req, res) {
     const id_private = generatePrivateID();
 
     const qrCodeUrl = await qr.toDataURL(
-      `${req.headers.origin}/api/follow/${id_public}`
+      `${req.headers.origin}/api/red/${id_public}`
     );
 
     console.log("Generated QR Code URL:", qrCodeUrl);
