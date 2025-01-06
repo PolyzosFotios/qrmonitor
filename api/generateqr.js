@@ -12,6 +12,8 @@ export default async function handler(req, res) {
       `${req.headers.origin}/api/follow/${id_public}`
     );
 
+    console.log("Generated QR Code URL:", qrCodeUrl);
+
     await dbNewAdd(id_public, id_private, url);
 
     res.status(200).json({ id_private, qrCodeUrl });
