@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <p style="font-size: 12px; padding-bottom: 8px">The ID of your QR Code is</p>
           <p><strong>${data.id_private}</strong></p><br>
           <button class="copy-button" id="copyButton">
-              <i class="fas fa-link"></i>
+              <i class="fa fa-copy"></i>
               Copy ID
           </button>
           <div class="msgs copy-msg" id="copied_msg"></div>
