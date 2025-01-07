@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     const id_public = generatePrivateID();
     const id_private = generatePrivateID();
 
-    let totalUrl = `${req.headers.origin}/api/generateqr/${id_public}`;
+    let totalUrl = `${req.headers.origin}/api/follow/${id_public}`;
 
     const qrCodeUrl = await qr.toDataURL(totalUrl);
 
@@ -19,33 +19,6 @@ export default async function handler(req, res) {
     res
       .status(200)
       .json({ id_private, qrCodeUrl, qrCodeRedirectUrl: totalUrl });
-  } else if (req.method === "GET") {
-    const { id } = req.query;
-
-    const { data, error } = await supabase
-      .from("generqrcodes")
-      .select("*")
-      .eq("id", id)
-      .single();
-
-    if (error) {
-      console.error("Error fetching QR code:", error);
-      return res.status(404).json({ error: "QR Code not found" });
-    }
-
-    const updatedScans = updateScan(data.scans);
-
-    const { error: updateError } = await supabase
-      .from("generqrcodes")
-      .update({ scans: updatedScans })
-      .eq("id", id);
-
-    if (updateError) {
-      console.error("Error updating scans:", updateError);
-      return res.status(500).json({ error: "Failed to update scans" });
-    }
-
-    res.redirect(data.url);
   } else {
     res.status(405).json({ error: "Method not allowed" });
   }
