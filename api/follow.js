@@ -1,8 +1,9 @@
 import { supabase } from "../supabase.js";
 
 export default async function handler(req, res) {
-  const { id } = req.query; // Παίρνει το ID από το URL
+  const { id } = req.query;
 
+  console.log("Searching for ID:", id);
   const { data, error } = await supabase
     .from("generqrcodes")
     .select("*")
@@ -11,10 +12,11 @@ export default async function handler(req, res) {
 
   if (error) {
     console.error("Error fetching QR code:", error);
-    return res.status(404).json({ error: "QR Code not found" });
+    return res.status(404).json({ error: "QR Code not found", details: error });
   }
 
-  // Ενημέρωση του αριθμού των σαρώσεων
+  console.log("Found QR Code Data:", data);
+
   const updatedScans = updateScan(data.scans);
 
   const { error: updateError } = await supabase
@@ -27,14 +29,14 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: "Failed to update scans" });
   }
 
-  res.redirect(data.url); // Ανακατεύθυνση στη διεύθυνση URL
+  res.redirect(data.url);
 }
 
 function updateScan(scans) {
   const d = new Date();
   const year = d.getFullYear();
   const month = d.getMonth();
-  scans = scans.slice(0, -1); // Αφαίρεση τελευταίου κόμματος
+  scans = scans.slice(0, -1);
   const scanEntries = scans.split(",");
   let updatedScans = "";
 
@@ -48,4 +50,4 @@ function updateScan(scans) {
 
   updatedScans = scanEntries.join(",") + ",";
   return updatedScans;
-} 
+}
