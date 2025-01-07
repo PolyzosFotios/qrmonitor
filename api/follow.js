@@ -1,5 +1,10 @@
 import { supabase } from "../supabase.js";
 
+export default function handler(req, res) {
+    const { id } = req.query;
+    res.status(200).json({ message: "Follow route works!", id });
+  }
+/*
 export default async function handler(req, res) {
   const { id } = req.query; // Παίρνει το ID από το URL
 
@@ -48,4 +53,4 @@ function updateScan(scans) {
 
   updatedScans = scanEntries.join(",") + ",";
   return updatedScans;
-}
+} */
