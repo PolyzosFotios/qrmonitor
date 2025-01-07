@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
               Download .png
           </button>
           <div class="msgs" id="download_msg"></div>
+          <p>${data.qrCodeRedirectUrl}</p>
           <a href="${data.qrCodeRedirectUrl}" target="_blank">
         <button class="test-button">
           Test QR Code URL
