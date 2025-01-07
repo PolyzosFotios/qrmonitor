@@ -8,15 +8,15 @@ export default async function handler(req, res) {
     const id_public = generatePrivateID();
     const id_private = generatePrivateID();
 
-    const qrCodeUrl = await qr.toDataURL(
-      `${req.headers.origin}/api/red/${id_public}`
-    );
+    let totalUrl = `${req.headers.origin}/api/red/${id_public}`;
+
+    const qrCodeUrl = await qr.toDataURL(totalUrl);
 
     console.log("Generated QR Code URL:", qrCodeUrl);
 
     await dbNewAdd(id_public, id_private, url);
 
-    res.status(200).json({ id_private, qrCodeUrl, qrCodeRedirectUrl: `${req.headers.origin}/api/follow/${id_public}` });
+    res.status(200).json({ id_private, qrCodeUrl, qrCodeRedirectUrl: totalUrl });
   } else {
     res.status(405).json({ error: "Method not allowed" });
   }
