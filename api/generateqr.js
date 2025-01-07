@@ -16,7 +16,7 @@ export default async function handler(req, res) {
 
     await dbNewAdd(id_public, id_private, url);
 
-    res.status(200).json({ id_private, qrCodeUrl });
+    res.status(200).json({ id_private, qrCodeUrl, qrCodeRedirectUrl: `${req.headers.origin}/api/follow/${id_public}` });
   } else {
     res.status(405).json({ error: "Method not allowed" });
   }

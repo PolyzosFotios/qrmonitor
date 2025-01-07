@@ -34,6 +34,11 @@ document.addEventListener("DOMContentLoaded", () => {
               Download .png
           </button>
           <div class="msgs" id="download_msg"></div>
+          <a href="${data.qrCodeRedirectUrl}" target="_blank">
+        <button class="test-button">
+          Test QR Code URL
+        </button>
+      </a>
         </div>
         <div class="center_items id_info">
           <p style="font-size: 12px; padding-bottom: 8px">The ID of your QR Code is</p>
