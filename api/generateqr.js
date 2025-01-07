@@ -18,7 +18,7 @@ export default async function handler(req, res) {
 
     res
       .status(200)
-      .json({ id_private, qrCodeUrl, qrCodeRedirectUrl: totalUrl });
+      .json({ id_private, qrCodeUrl });
   } else {
     res.status(405).json({ error: "Method not allowed" });
   }
